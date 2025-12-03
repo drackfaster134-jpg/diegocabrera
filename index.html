@@ -2,38 +2,64 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inventario de Equipos</title>
+    <title>Panel TI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Inventario de Equipos</h1>
+    <h1>Panel de Herramientas TI</h1>
 
-    <form id="form-equipo">
-        <input type="text" id="nombre" placeholder="Nombre del equipo" required>
-        <input type="text" id="modelo" placeholder="Modelo" required>
-        <select id="estado" required>
-            <option value="">Selecciona estado</option>
-            <option value="Disponible">Disponible</option>
-            <option value="En reparación">En reparación</option>
-            <option value="No funciona">No funciona</option>
-        </select>
-        <button type="submit">Agregar Equipo</button>
-    </form>
+    <div class="tabs">
+        <button class="tab-btn" onclick="abrirTab('inventario')">Inventario</button>
+        <button class="tab-btn" onclick="abrirTab('tareas')">Tareas</button>
+        <button class="tab-btn" onclick="abrirTab('notas')">Notas</button>
+    </div>
 
-    <h2>Lista de Equipos</h2>
-    <table id="tabla-equipos">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Modelo</th>
-                <th>Estado</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Los equipos se agregarán aquí -->
-        </tbody>
-    </table>
+    <!-- Inventario -->
+    <div id="inventario" class="tab">
+        <h2>Inventario de Equipos</h2>
+        <form id="form-equipo">
+            <input type="text" id="nombre" placeholder="Nombre del equipo" required>
+            <input type="text" id="modelo" placeholder="Modelo" required>
+            <select id="estado" required>
+                <option value="">Selecciona estado</option>
+                <option value="Disponible">Disponible</option>
+                <option value="En reparación">En reparación</option>
+                <option value="No funciona">No funciona</option>
+            </select>
+            <button type="submit">Agregar Equipo</button>
+        </form>
+        <table id="tabla-equipos">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Modelo</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Tareas -->
+    <div id="tareas" class="tab">
+        <h2>Lista de Tareas</h2>
+        <form id="form-tarea">
+            <input type="text" id="tarea-texto" placeholder="Nueva tarea" required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="lista-tareas"></ul>
+    </div>
+
+    <!-- Notas -->
+    <div id="notas" class="tab">
+        <h2>Notas Rápidas</h2>
+        <form id="form-nota">
+            <textarea id="nota-texto" placeholder="Escribe tu nota" required></textarea>
+            <button type="submit">Agregar Nota</button>
+        </form>
+        <ul id="lista-notas"></ul>
+    </div>
 
     <script src="script.js"></script>
 </body>
