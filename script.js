@@ -8,11 +8,6 @@ function abrirTab(tabName) {
 }
 
 // Abrir inventario por defecto al cargar la página
-window.onload = function() {
-    abrirTab('inventario');
-}
-
-
 // === INVENTARIO ===
 const formEquipo = document.getElementById('form-equipo');
 const tabla = document.getElementById('tabla-equipos').getElementsByTagName('tbody')[0];
