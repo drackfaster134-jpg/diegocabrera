@@ -1,128 +1,76 @@
-// === Función para cambiar pestañas ===
-function abrirTab(tabName) {
-    // Ocultar bienvenida
-    document.getElementById('bienvenida').style.display = 'none';
-
-    // Ocultar todas las pestañas
-    const tabs = document.getElementsByClassName('tab');
-    for (let tab of tabs) {
-        tab.style.display = 'none';
-    }
-
-    // Mostrar la pestaña seleccionada
-    document.getElementById(tabName).style.display = 'block';
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
 }
 
-
-// === INVENTARIO ===
-const formEquipo = document.getElementById('form-equipo');
-const tabla = document.getElementById('tabla-equipos').getElementsByTagName('tbody')[0];
-let inventario = JSON.parse(localStorage.getItem('inventario')) || [];
-
-function mostrarInventario() {
-    tabla.innerHTML = '';
-    inventario.forEach((equipo, index) => {
-        const fila = tabla.insertRow();
-        fila.insertCell(0).textContent = equipo.nombre;
-        fila.insertCell(1).textContent = equipo.modelo;
-        fila.insertCell(2).textContent = equipo.estado;
-        const btnBorrar = document.createElement('button');
-        btnBorrar.textContent = 'Borrar';
-        btnBorrar.classList.add('borrar');
-        btnBorrar.onclick = () => borrarEquipo(index);
-        fila.insertCell(3).appendChild(btnBorrar);
-    });
+h1, h2 {
+    text-align: center;
 }
 
-formEquipo.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nuevoEquipo = {
-        nombre: document.getElementById('nombre').value,
-        modelo: document.getElementById('modelo').value,
-        estado: document.getElementById('estado').value
-    };
-    inventario.push(nuevoEquipo);
-    localStorage.setItem('inventario', JSON.stringify(inventario));
-    formEquipo.reset();
-    mostrarInventario();
-});
-
-function borrarEquipo(index) {
-    inventario.splice(index, 1);
-    localStorage.setItem('inventario', JSON.stringify(inventario));
-    mostrarInventario();
+.tabs {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-mostrarInventario();
-
-
-// === TAREAS ===
-const formTarea = document.getElementById('form-tarea');
-const listaTareas = document.getElementById('lista-tareas');
-let tareas = JSON.parse(localStorage.getItem('tareas')) || [];
-
-function mostrarTareas() {
-    listaTareas.innerHTML = '';
-    tareas.forEach((tarea, index) => {
-        const li = document.createElement('li');
-        li.textContent = tarea;
-        const btnBorrar = document.createElement('button');
-        btnBorrar.textContent = 'Borrar';
-        btnBorrar.onclick = () => borrarTarea(index);
-        li.appendChild(btnBorrar);
-        listaTareas.appendChild(li);
-    });
+.tab-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
 }
 
-formTarea.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const texto = document.getElementById('tarea-texto').value;
-    tareas.push(texto);
-    localStorage.setItem('tareas', JSON.stringify(tareas));
-    formTarea.reset();
-    mostrarTareas();
-});
-
-function borrarTarea(index) {
-    tareas.splice(index, 1);
-    localStorage.setItem('tareas', JSON.stringify(tareas));
-    mostrarTareas();
+/* Todas las pestañas ocultas por defecto */
+.tab {
+    display: none;
 }
 
-mostrarTareas();
-
-
-// === NOTAS ===
-const formNota = document.getElementById('form-nota');
-const listaNotas = document.getElementById('lista-notas');
-let notas = JSON.parse(localStorage.getItem('notas')) || [];
-
-function mostrarNotas() {
-    listaNotas.innerHTML = '';
-    notas.forEach((nota, index) => {
-        const li = document.createElement('li');
-        li.textContent = nota;
-        const btnBorrar = document.createElement('button');
-        btnBorrar.textContent = 'Borrar';
-        btnBorrar.onclick = () => borrarNota(index);
-        li.appendChild(btnBorrar);
-        listaNotas.appendChild(li);
-    });
+/* Mensaje de bienvenida */
+.bienvenida {
+    text-align: center;
+    margin-top: 50px;
 }
 
-formNota.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const texto = document.getElementById('nota-texto').value;
-    notas.push(texto);
-    localStorage.setItem('notas', JSON.stringify(notas));
-    formNota.reset();
-    mostrarNotas();
-});
-
-function borrarNota(index) {
-    notas.splice(index, 1);
-    localStorage.setItem('notas', JSON.stringify(notas));
-    mostrarNotas();
+/* Inventario */
+table {
+    width: 80%;
+    margin: 0 auto 20px;
+    border-collapse: collapse;
 }
 
-mostrarNotas();
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+button.borrar {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+/* Tareas y Notas */
+ul {
+    list-style: none;
+    padding: 0;
+    width: 50%;
+    margin: 0 auto 20px;
+}
+
+ul li {
+    background: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul li button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+}
