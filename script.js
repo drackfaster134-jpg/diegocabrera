@@ -1,11 +1,16 @@
 // === Función para cambiar pestañas ===
 function abrirTab(tabName) {
     const tabs = document.getElementsByClassName('tab');
-    for (let tab of tabs) tab.style.display = 'none';
+    for (let tab of tabs) {
+        tab.style.display = 'none';
+    }
     document.getElementById(tabName).style.display = 'block';
 }
-// Abrir inventario por defecto
-abrirTab('inventario');
+
+// Abrir inventario por defecto al cargar la página
+window.onload = function() {
+    abrirTab('inventario');
+}
 
 
 // === INVENTARIO ===
