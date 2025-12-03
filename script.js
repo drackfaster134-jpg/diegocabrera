@@ -1,13 +1,19 @@
 // === Función para cambiar pestañas ===
 function abrirTab(tabName) {
+    // Ocultar bienvenida
+    document.getElementById('bienvenida').style.display = 'none';
+
+    // Ocultar todas las pestañas
     const tabs = document.getElementsByClassName('tab');
     for (let tab of tabs) {
         tab.style.display = 'none';
     }
+
+    // Mostrar la pestaña seleccionada
     document.getElementById(tabName).style.display = 'block';
 }
 
-// Abrir inventario por defecto al cargar la página
+
 // === INVENTARIO ===
 const formEquipo = document.getElementById('form-equipo');
 const tabla = document.getElementById('tabla-equipos').getElementsByTagName('tbody')[0];
