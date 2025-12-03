@@ -7,21 +7,25 @@ h1, h2 {
     text-align: center;
 }
 
-form {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.tabs {
+    text-align: center;
     margin-bottom: 20px;
 }
 
-input, select, button {
-    padding: 5px;
-    font-size: 14px;
+.tab-btn {
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
 }
 
+.tab {
+    display: none;
+}
+
+/* Inventario */
 table {
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     border-collapse: collapse;
 }
 
@@ -38,3 +42,23 @@ button.borrar {
     padding: 4px 8px;
     cursor: pointer;
 }
+
+/* Tareas y Notas */
+ul {
+    list-style: none;
+    padding: 0;
+    width: 50%;
+    margin: 0 auto 20px;
+}
+
+ul li {
+    background: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul li button {
+    background-color
